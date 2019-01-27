@@ -1,0 +1,15 @@
+{
+    "name": "Matt Wit Home Budget",
+    "description": "Home Budget for school project",
+    "type": "project",
+    "license": "AGPL",
+    "authors": [
+        {
+            "name": "Mat Wit"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    }
+}
