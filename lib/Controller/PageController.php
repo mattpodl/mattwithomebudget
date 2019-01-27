@@ -28,4 +28,12 @@ class PageController extends Controller {
 		return new TemplateResponse('mattwithomebudget', 'index');  // templates/index.php
 	}
 
+	/*
+	* @NoAdminRequired
+	* @NoCSRFRequired
+	*/
+   public function analysis() {
+	   return new TemplateResponse('mattwithomebudget', 'analysis');  // templates/analysis.php
+   }
+
 }
