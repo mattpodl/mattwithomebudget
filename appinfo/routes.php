@@ -13,7 +13,12 @@ return [
     ],
     'routes' => [
 	   ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-	   ['name' => 'page#analysis', 'url' => '/analysis', 'verb' => 'GET'],
+       ['name' => 'page#analysis', 'url' => '/analysis', 'verb' => 'GET'],
+	   ['name' => 'page#categories', 'url' => '/categories', 'verb' => 'GET'],
+	   ['name' => 'page#costam', 'url' => '/costam', 'verb' => 'GET'],
+       ['name' => 'page#costampost', 'url' => '/costam', 'verb' => 'POST'],
+       ['name' => 'page#costam2', 'url' => '/costam2', 'verb' => 'GET'],
+	   ['name' => 'page#costam2post', 'url' => '/costam2', 'verb' => 'POST'],
        ['name' => 'page#do_echo', 'url' => '/echo', 'verb' => 'POST'],
     ]
 ];

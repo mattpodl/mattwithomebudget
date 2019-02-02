@@ -28,12 +28,53 @@ class PageController extends Controller {
 		return new TemplateResponse('mattwithomebudget', 'index');  // templates/index.php
 	}
 
-	/*
+	/**
 	* @NoAdminRequired
 	* @NoCSRFRequired
 	*/
    public function analysis() {
 	   return new TemplateResponse('mattwithomebudget', 'analysis');  // templates/analysis.php
    }
+
+   	/**
+	* @NoAdminRequired
+	* @NoCSRFRequired
+	*/
+	public function categories() {
+		return new TemplateResponse('mattwithomebudget', 'categories');  // templates/analysis.php
+	}
+
+		/**
+	* @NoAdminRequired
+	* @NoCSRFRequired
+	*/
+	public function costam() {
+		return new TemplateResponse('mattwithomebudget', 'costam');  // templates/analysis.php
+	}
+
+			/**
+	* @NoAdminRequired
+	* @NoCSRFRequired
+	*/
+	public function costampost() {
+		return new TemplateResponse('mattwithomebudget', 'costam');  // templates/analysis.php
+	}
+
+		/**
+	* @NoAdminRequired
+	* @NoCSRFRequired
+	*/
+	public function costam2() {
+		return new TemplateResponse('mattwithomebudget', 'costam2');  // templates/analysis.php
+	}
+
+	
+		/**
+	* @NoAdminRequired
+	* @NoCSRFRequired
+	*/
+	public function costam2post() {
+		return new TemplateResponse('mattwithomebudget', 'costam2');  // templates/analysis.php
+	}
 
 }
