@@ -21,8 +21,8 @@
      }
 
      /**
-      * @NoAdminRequired
       * @NoCSRFRequired
+      * @NoAdminRequired
       */
      public function index() {
          return new DataResponse($this->service->findAll($this->userId));
@@ -40,6 +40,7 @@
      }
 
      /**
+      * @NoCSRFRequired
       * @NoAdminRequired
       *
       * @param string $date
