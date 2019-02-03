@@ -1,11 +1,11 @@
-<?xml version="1.1"?>
+<?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>mattwithomebudget</id>
     <name>Matt Wit Home Budget</name>
     <summary>Home Budget for school project</summary>
     <description><![CDATA[Home Budget for school project]]></description>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <licence>agpl</licence>
     <author mail="m.podlasinski@gmail.com" >Mat Wit</author>
     <namespace>MattWitHomeBudget</namespace>

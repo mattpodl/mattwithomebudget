@@ -2,19 +2,29 @@
  namespace OCA\MattWitHomeBudget\Controller;
 
  use OCP\IRequest;
+ use OCP\AppFramework\Http\DataResponse;
  use OCP\AppFramework\Controller;
+
+ use OCA\MattWitHomeBudget\Service\ExpenseService;
 
  class ExpenseController extends Controller {
 
-     public function __construct($AppName, IRequest $request){
+     private $mapper;
+     private $userId;
+     
+     use Errors;
+
+     public function __construct($AppName, IRequest $request, ExpenseService $service, $UserId){
          parent::__construct($AppName, $request);
+         $this->service = $service;
+         $this->userId = $UserId;
      }
 
      /**
       * @NoAdminRequired
       */
      public function index() {
-         // empty for now
+         return new DataResponse($this->service->findAll($this->userId));
      }
 
      /**
@@ -23,29 +33,40 @@
       * @param int $id
       */
      public function show($id) {
-         // empty for now
+         return $this->handleNotFound(function () use ($id) {
+			 return $this->service->find($id, $this->userId);
+		 });
      }
 
      /**
       * @NoAdminRequired
       *
-      * @param string $title
-      * @param string $content
+      * @param string $date
+      * @param string $recipient
+      * @param string $description
+      * @param string $amount
+      * @param int $categoryId
       */
-     public function create($title, $content) {
-         // empty for now
+     public function create($date, $recipient, $description, $amount, $categoryId) {
+         return $this->service->create($date, $recipient, $description, $amount, $categoryId, $this->userId);
      }
 
      /**
       * @NoAdminRequired
       *
       * @param int $id
-      * @param string $title
-      * @param string $content
+      * @param string $date
+      * @param string $dayNumber
+      * @param string $recipient
+      * @param string $description
+      * @param string $amount
+      * @param int $categoryId
       */
-     public function update($id, $title, $content) {
-         // empty for now
-     }
+     public function update($id, $date, $dayNumber, $recipient, $description, $amount, $categoryId) {
+         return $this->handleNotFound(function () use ($id, $date, $dayNumber, $recipient, $description, $amount, $categoryId) {
+           return $this->service->update($id, $date, $dayNumber, $recipient, $description, $amount, $categoryId, $this->userId);
+         });
+	 }
 
      /**
       * @NoAdminRequired
@@ -53,7 +74,9 @@
       * @param int $id
       */
      public function destroy($id) {
-         // empty for now
+         return $this->handleNotFound(function () use ($id) {
+           return $this->service->delete($id, $this->userId);
+         });
      }
 
  }
