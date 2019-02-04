@@ -23,7 +23,7 @@
                 <notnull>true</notnull>
             </field>
             <field>
-                <name>categoryId</name>
+                <name>category_id</name>
                 <type>integer</type>
                 <notnull>false</notnull>
                 <unsigned>true</unsigned>
@@ -37,7 +37,7 @@
                 <notnull>true</notnull>
             </field>
             <field>
-                <name>dayNumber</name>
+                <name>day_number</name>
                 <type>text</type>
                 <length>200</length>
                 <default></default>

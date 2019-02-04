@@ -5,7 +5,7 @@
     <name>Matt Wit Home Budget</name>
     <summary>Home Budget for school project</summary>
     <description><![CDATA[Home Budget for school project]]></description>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <licence>agpl</licence>
     <author mail="m.podlasinski@gmail.com" >Mat Wit</author>
     <namespace>MattWitHomeBudget</namespace>
