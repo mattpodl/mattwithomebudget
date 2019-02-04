@@ -1,20 +1,35 @@
 <?php
  namespace OCA\MattWitHomeBudget\Controller;
 
- use OCP\IRequest;
- use OCP\AppFramework\Http\DataResponse;
  use OCP\AppFramework\Controller;
+ use OCP\IRequest;
+ use OCP\IConfig;
+ use OCP\AppFramework\Http\DataResponse;
+
 
  use OCA\MattWitHomeBudget\Service\ExpenseService;
 
+/**
+ * Class ExpenseController
+ *
+ * @package OCA\MattWitHomeBudget\Controller
+ */
  class ExpenseController extends Controller {
 
+     /** @var ExpenseService */
      private $service;
+     /** @var string */
      private $userId;
      
      use Errors;
 
-     public function __construct(string $AppName, IRequest $request, ExpenseService $service, $UserId){
+         /**
+     * @param string $AppName
+     * @param IRequest $request
+     * @param ExpenseService $service
+     * @param string $UserId
+     */
+     public function __construct($AppName, IRequest $request, ExpenseService $service, $UserId){
          parent::__construct($AppName, $request);
          $this->service = $service;
          $this->userId = $UserId;

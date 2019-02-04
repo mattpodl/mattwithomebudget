@@ -5,6 +5,10 @@ use JsonSerializable;
 
 use OCP\AppFramework\Db\Entity;
 
+/**
+ * Class Note
+ * @package OCA\Notes\Db
+ */
 class Expense extends Entity implements JsonSerializable {
 
     protected $content;
