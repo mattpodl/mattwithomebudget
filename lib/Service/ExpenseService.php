@@ -11,6 +11,7 @@
 
  class ExpenseService {
 
+     /** @var ExpenseMapper */
      private $mapper;
 
      public function __construct(ExpenseMapper $mapper){
@@ -45,7 +46,10 @@
      
      public function create($date, $recipient, $description, $amount, $categoryId, $userId) {
          $expense = new Expense();
+         $expense->setContent('');
+         $expense->setUserId($userId);
          $expense->setDate($date);
+         $expense->setDayNumber(1);
          $expense->setRecipient($recipient);
          $expense->setDescription($description);
          $expense->setAmount($amount);
