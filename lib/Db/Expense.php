@@ -7,18 +7,18 @@ use OCP\AppFramework\Db\Entity;
 
 /**
  * Class Expense
- * @package OCA\Notes\Db
+ * @package OCA\MattWitHomeBudget\Db
  */
 class Expense extends Entity implements JsonSerializable {
 
-    public $content;
-    public $userId;
-    public $date;
-    public $dayNumber;
-    public $recipient;
-    public $description;
-    public $amount;
-    public $categoryId;
+    protected $content;
+    protected $userId;
+    protected $date;
+    protected $dayNumber;
+    protected $recipient;
+    protected $description;
+    protected $amount;
+    protected $categoryId;
 
     public function jsonSerialize() {
         return [

@@ -65,8 +65,8 @@
       * @param string $amount
       * @param int $categoryId
       */
-     public function create(string $date, string $recipient, string $description, string $amount, int $categoryId) {
-         return $this->service->create($date, $recipient, $description, $amount, $categoryId, $this->userId);
+     public function create($date, $amount, $recipient='', $description='', $categoryId=null) {
+         return $this->service->create($this->userId, $date, $amount, $recipient, $description, $categoryId);
      }
 
      /**

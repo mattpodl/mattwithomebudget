@@ -6,15 +6,15 @@
  use OCP\AppFramework\Db\DoesNotExistException;
  use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 
- use OCA\MattWitHomeBudget\Db\Expense;
- use OCA\MattWitHomeBudget\Db\ExpenseMapper;
+ use OCA\MattWitHomeBudget\Db\Category;
+ use OCA\MattWitHomeBudget\Db\CategoryMapper;
 
- class ExpenseService {
+ class CategoryService {
 
-     /** @var ExpenseMapper */
+     /** @var CategoryMapper */
      private $mapper;
 
-     public function __construct(ExpenseMapper $mapper){
+     public function __construct(CategoryMapper $mapper){
          $this->mapper = $mapper;
      }
 
@@ -44,29 +44,25 @@
          }
      }
      
-     public function create($userId, $date, $amount, $recipient='', $description='', $categoryId=null) {
-         $expense = new Expense();
-         $expense->setContent('');
-         $expense->setUserId($userId);
-         $expense->setDate($date);
-         $expense->setDayNumber(1);
-         $expense->setRecipient($recipient);
-         $expense->setDescription($description);
-         $expense->setAmount($amount);
-         $expense->setCategoryId($categoryId);
-         return $this->mapper->insert($expense);
+     public function create($userId, $name, $hexColor, $description='', $budgetPeriod=30) {
+         $category = new Category();
+         $category->setUserId($userId);
+         $category->setName($name);
+         $category->sethexColor($hexColor);
+         $category->setDescription($description);
+         $category->setBudgetPeriod($budgetPeriod);
+         return $this->mapper->insert($category);
      }
 
-     public function update($id, $date, $dayNumber, $recipient, $description, $amount, $categoryId, $userId) {
+     public function update($id, $userId, $name, $hexColor, $description, $budgetPeriod) {
          try {
-             $expense = $this->mapper->find($id, $userId);
-             $expense->setDate($date);
-             $expense->setDayNumber($dayNumber);
-             $expense->setRecipient($recipient);
-             $expense->setDescription($description);
-             $expense->setAmount($amount);
-             $expense->setCategoryId($categoryId);
-         return $this->mapper->update($expense);
+             $category = $this->mapper->find($id, $userId);
+             $category->setUserId($userId);
+             $category->setName($name);
+             $category->sethexColor($hexColor);
+             $category->setDescription($description);
+             $category->setBudgetPeriod($budgetPeriod);
+             return $this->mapper->update($category);
          } catch(Exception $e) {
              $this->handleException($e);
          }
@@ -74,8 +70,8 @@
 
      public function delete($id, $userId) {
          try {
-             $expense = $this->mapper->find($id, $userId);
-             $this->mapper->delete($expense);
+             $category = $this->mapper->find($id, $userId);
+             $this->mapper->delete($category);
          } catch(Exception $e) {
              $this->handleException($e);
          }
