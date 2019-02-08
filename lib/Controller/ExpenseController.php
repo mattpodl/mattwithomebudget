@@ -70,7 +70,8 @@
       */
      public function create($date, $amount, $recipient='', $description='', $categoryId=null) {
          $this->service->create($this->userId, $date, $amount, $recipient, $description, $categoryId);
-         return new RedirectResponse('/index.php/apps/mattwithomebudget');
+         $url = $this->urlGenerator->linkToRoute('mattwithomebudget.expense.create');
+         return new RedirectResponse($url);
      }
 
      /**
