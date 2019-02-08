@@ -21,6 +21,15 @@
      public function findAll($userId) {
          return $this->mapper->findAll($userId);
      }
+
+     public function returnAll($userId){
+         $foundAll = $this->findAll($userId);
+         $a;
+         foreach ($foundAll as $key => $value) {
+            $a[$key] = (array) $value;
+         }
+         return $a;
+     }
      
      private function handleException ($e) {
          if ($e instanceof DoesNotExistException ||
