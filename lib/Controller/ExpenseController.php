@@ -52,7 +52,7 @@
       *
       * @param int $id
       */
-     public function show(int $id) {
+     public function show($id) {
          return $this->handleNotFound(function () use ($id) {
 			 return $this->service->find($id, $this->userId);
 		 });
@@ -86,7 +86,7 @@
       * @param string $amount
       * @param int $categoryId
       */
-     public function update(int $id, string $date, string $dayNumber, string $recipient, string $description, string $amount, int $categoryId) {
+     public function update($id, $date, $dayNumber, $recipient, $description, $amount, $categoryId) {
          return $this->handleNotFound(function () use ($id, $date, $dayNumber, $recipient, $description, $amount, $categoryId) {
            return $this->service->update($id, $date, $dayNumber, $recipient, $description, $amount, $categoryId, $this->userId);
          });
@@ -98,7 +98,7 @@
       *
       * @param int $id
       */
-     public function destroy(int $id) {
+     public function destroy($id) {
          return $this->handleNotFound(function () use ($id) {
            return $this->service->delete($id, $this->userId);
          });
