@@ -1,6 +1,6 @@
 <div id="app-content-container">
     <h1>Moje wydatki</h1>
-    <h2><a href="#">Dodaj nowy</a></h2>
+    <!--<h2><a href="#">Dodaj nowy</a></h2>-->
     <table>
     <tr>
 		<th>Data</th>
@@ -27,19 +27,27 @@
         <td><input type="submit" value="Dodaj"></td>
 	</form></tr>
 	<?php
+	$rawContent = '<h3>Nie dodałeś jeszcze żadnych wydatków! Do dzieła!</h3>';
+	$expensesFromDbTotal = 0.0;
+	//setlocale($LC_ALL, 'pl_PL');
+	//
+	if (count($_['expensesFromDb']) > 0) {$rawContent = '';}
+
 	foreach ($_['expensesFromDb'] as $expense => $raw) {
-		$rawContent = '<tr>';
+		$amount = (float) $raw['amount'];
+		$expensesFromDbTotal += $amount;
+		$rawContent .= '<tr>';
 		$rawContent .= '<td>'.$raw['date'].'</td>';
 		$rawContent .= '<td>'.$raw['categoryId'].'</td>';
 		$rawContent .= '<td>'.$raw['recipient'].'</td>';
 		$rawContent .= '<td>'.$raw['description'].'</td>';
-		$rawContent .= '<td>'.$raw['amount'].'</td>';
+		$rawContent .= '<td>'.$amount.'</td>';
 		$rawContent .= "<td><a href='/index.php/apps/mattwithomebudget/expenses/{$raw['id']}'><input type='submit' value='Edytuj'></a></td>";
 		$rawContent .= '</tr>';
-		print_unescaped($rawContent);
 	}
+	print_unescaped($rawContent);
 	?>
-	<tr>
+	<!--<tr>
 		<td>2019-01-26</td>
 		<td>Podstawowe</td>
 		<td>JMP SA BIEDRONKA 2557 GDANSK PL</td>
@@ -63,13 +71,13 @@
 		<td>-124,96
         <td><input type="submit" value="Edytuj"><input type="submit" value="Edytuj"></td>
 </td>
-	</tr>
+	</tr>-->
     <tr>
 		<th></th>
 		<th></th>
 		<th></th>
         <th>Suma:</th>
-        <th>294,61</th>
+        <th><?php p($expensesFromDbTotal); ?></th>
 		<th></th>
 		
 	</tr>
