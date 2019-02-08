@@ -11,14 +11,14 @@ use OCP\AppFramework\Db\Entity;
  */
 class Expense extends Entity implements JsonSerializable {
 
-    protected $content;
-    protected $userId;
-    protected $date;
-    protected $dayNumber;
-    protected $recipient;
-    protected $description;
-    protected $amount;
-    protected $categoryId;
+    public $content;
+    public $userId;
+    public $date;
+    public $dayNumber;
+    public $recipient;
+    public $description;
+    public $amount;
+    public $categoryId;
 
     public function jsonSerialize() {
         return [
