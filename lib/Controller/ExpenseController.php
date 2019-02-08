@@ -6,6 +6,7 @@
  use OCP\IConfig;
  use OCP\IURLGenerator;
  use OCP\AppFramework\Http\DataResponse;
+ use OCP\AppFramework\Http\RedirectResponse;
 
 
  use OCA\MattWitHomeBudget\Service\ExpenseService;
@@ -68,7 +69,8 @@
       * @param int $categoryId
       */
      public function create($date, $amount, $recipient='', $description='', $categoryId=null) {
-         return $this->service->create($this->userId, $date, $amount, $recipient, $description, $categoryId);
+         $this->service->create($this->userId, $date, $amount, $recipient, $description, $categoryId);
+         return new RedirectResponse('/index.php/apps/mattwithomebudget');
      }
 
      /**
