@@ -20,7 +20,7 @@ class PageController extends Controller {
 		$this->expenseService = $expenseService;
 		$this->categoryService = $categoryService;
 	}
-
+	
 	/**
 	 * CAUTION: the @Stuff turns off security checks; for this page no admin is
 	 *          required and no CSRF check. If you don't know what CSRF is, read
@@ -32,8 +32,39 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
+		$templateParams['content'] = 'index';
 		$templateParams['expensesFromDb'] = $this->expenseService->returnAll($this->userId);
-		$templateParams['expensesFromDbRaw'] = json_decode(json_encode($this->expenseService->findAll($this->userId)), true);
+		//$templateParams['expensesFromDbRaw'] = json_decode(json_encode($this->expenseService->findAll($this->userId)), true);
+		return new TemplateResponse('mattwithomebudget', 'index', $templateParams);  // templates/index.php
+	}
+
+	/**
+	* @NoAdminRequired
+	* @NoCSRFRequired
+	*/
+	public function expenses() {
+		$templateParams['content'] = 'expenses';
+		$templateParams['expensesFromDb'] = $this->expenseService->returnAll($this->userId);
+		return new TemplateResponse('mattwithomebudget', 'index', $templateParams);  // templates/index.php
+	}
+
+	/**
+	* @NoAdminRequired
+	* @NoCSRFRequired
+	*/
+	public function categories() {
+		$templateParams['content'] = 'categories';
+		$templateParams['expensesFromDb'] = $this->expenseService->returnAll($this->userId);
+		return new TemplateResponse('mattwithomebudget', 'index', $templateParams);  // templates/index.php
+	}
+
+	/**
+	* @NoAdminRequired
+	* @NoCSRFRequired
+	*/
+	public function importCsv() {
+		$templateParams['content'] = 'import';
+		$templateParams['expensesFromDb'] = $this->expenseService->returnAll($this->userId);
 		return new TemplateResponse('mattwithomebudget', 'index', $templateParams);  // templates/index.php
 	}
 

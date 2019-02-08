@@ -9,20 +9,43 @@
  */
 return [
     'resources' => [
-        'expense' => ['url' => '/expenses'],
-        'category' => ['url' => '/categories'],
+        //'expense' => ['url' => '/expenses'],
+        //'category' => ['url' => '/categories'],
     ],
     'routes' => [
-	   // INDEX, Podsumowanie aka analizy
-	   ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+        //STRONY
+       ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'], // INDEX, Podsumowanie aka analizy
+       ['name' => 'page#expenses', 'url' => '/expenses', 'verb' => 'GET'],
+       ['name' => 'page#categories', 'url' => '/categories', 'verb' => 'GET'],
+       ['name' => 'page#importCsv', 'url' => '/import', 'verb' => 'GET'], // Import CSV
        
+       //ZASOBY
+        //EXPENSES
+            //['name' => 'expense#index', 'url' => '/expenses', 'verb' => 'GET'],
+            //['name' => 'expense#show', 'url' => '/expenses/{id}', 'verb' => 'GET'],
+            ['name' => 'expense#create', 'url' => '/expenses', 'verb' => 'POST'],
+            ['name' => 'expense#operator', 'url' => '/expenses/{id}', 'verb' => 'POST'],
+            ['name' => 'expense#update', 'url' => '/expenses/{id}', 'verb' => 'PUT'],
+            ['name' => 'expense#destroy', 'url' => '/expenses/{id}', 'verb' => 'DELETE'],
+        //CATEGORIES
+            //['name' => 'category#index', 'url' => '/categories', 'verb' => 'GET'],
+            //['name' => 'category#show', 'url' => '/categories/{id}', 'verb' => 'GET'],
+            ['name' => 'category#create', 'url' => '/categories', 'verb' => 'POST'],
+            ['name' => 'category#operator', 'url' => '/categories/{id}', 'verb' => 'POST'],
+            ['name' => 'category#update', 'url' => '/categories/{id}', 'verb' => 'PUT'],
+            ['name' => 'category#destroy', 'url' => '/categories/{id}', 'verb' => 'DELETE'],
+        //IMPORT
+            ['name' => 'import#csvImporter', 'url' => '/import', 'verb' => 'POST'],
+
+
+
+
        // Parametry analizy
        ['name' => 'param#index', 'url' => '/params', 'verb' => 'GET'],
        ['name' => 'param#show', 'url' => '/params/{id}', 'verb' => 'GET'],
        ['name' => 'param#update', 'url' => '/params/{id}', 'verb' => 'PUT'],
        
-       // Import CSV
-       ['name' => 'import#index', 'url' => '/import', 'verb' => 'GET'],
+       
        
        // To be deleted
 
