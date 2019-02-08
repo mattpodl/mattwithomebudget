@@ -70,7 +70,7 @@
       */
      public function create($date, $amount, $recipient='', $description='', $categoryId=null) {
          $this->service->create($this->userId, $date, $amount, $recipient, $description, $categoryId);
-         $url = $this->urlGenerator->linkToRoute('mattwithomebudget.expense.create');
+         $url = $this->urlGenerator->linkToRoute('mattwithomebudget.page.expenses');
          return new RedirectResponse($url);
      }
 
