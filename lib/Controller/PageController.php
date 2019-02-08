@@ -48,6 +48,19 @@ class PageController extends Controller {
 		return new TemplateResponse('mattwithomebudget', 'index', $templateParams);  // templates/index.php
 	}
 
+     /**
+      * @NoCSRFRequired
+      * @NoAdminRequired
+      *
+      * @param int $id
+      */
+	public function expenseEdit($id) {
+		$templateParams['content'] = 'expenseEdit';
+		$templateParams['expensesFromDb'] = $this->expenseService->returnOne($id, $this->userId);
+		//$templateParams['expensesFromDbRaw'] = $this->expenseService->find($id, $this->userId);
+		return new TemplateResponse('mattwithomebudget', 'index', $templateParams);  // templates/index.php
+	}
+
 	/**
 	* @NoAdminRequired
 	* @NoCSRFRequired

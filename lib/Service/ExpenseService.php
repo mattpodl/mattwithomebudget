@@ -52,6 +52,11 @@
              $this->handleException($e);
          }
      }
+
+     public function returnOne($id, $userId){
+        $a = (array) $this->find($id, $userId);
+        return $a;
+    }
      
      public function create($userId, $date, $amount, $recipient='', $description='', $categoryId=null) {
          $expense = new Expense();
