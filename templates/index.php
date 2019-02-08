@@ -11,7 +11,10 @@ style('mattwithomebudget', 'style');
 
 	<div id="app-content">
 		<div id="app-content-wrapper">
-			<?php print_unescaped($this->inc('content/index')); ?>
+			<?php 
+				$content = 'content/'.$_['content'];
+				print_unescaped($this->inc($content));
+			?>
 		</div>
 	</div>
 </div>
