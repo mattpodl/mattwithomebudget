@@ -6,12 +6,19 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 
+use OCA\MattWitHomeBudget\Service\ExpenseService;
+use OCA\MattWitHomeBudget\Service\CategoryService;
+
 class PageController extends Controller {
 	private $userId;
+	private $expenseService;
+	private $categoryService;
 
-	public function __construct($AppName, IRequest $request, $UserId){
+	public function __construct($AppName, IRequest $request, ExpenseService $expenseService, CategoryService $categoryService, $UserId){
 		parent::__construct($AppName, $request);
 		$this->userId = $UserId;
+		$this->expenseService = $expenseService;
+		$this->categoryService = $categoryService;
 	}
 
 	/**
@@ -25,7 +32,9 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
-		return new TemplateResponse('mattwithomebudget', 'index');  // templates/index.php
+		$templateParams['expensesFromDb'] = $this->expenseService->returnAll($this->userId);
+		$templateParams['expensesFromDbRaw'] = json_decode(json_encode($this->expenseService->findAll($this->userId)), true);
+		return new TemplateResponse('mattwithomebudget', 'index', $templateParams);  // templates/index.php
 	}
 
 }
