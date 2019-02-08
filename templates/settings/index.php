@@ -5,6 +5,10 @@
 		></button>
 	</div>
 	<div id="app-settings-content">
-		<!-- Your settings in here -->
+		<form action="/index.php/apps/mattwithomebudget/params" method="post" autocomplete="off">
+		<label>Liczba dni w okresie podsumowania</label>
+		<input type="text" name="summaryPeriod" placeholder="30" required>
+		<input type="submit" value="Ustaw">
+		</form>
 	</div>
 </div>
