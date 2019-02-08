@@ -4,6 +4,7 @@
  use OCP\AppFramework\Controller;
  use OCP\IRequest;
  use OCP\IConfig;
+ use OCP\IURLGenerator;
  use OCP\AppFramework\Http\DataResponse;
 
 
@@ -29,10 +30,11 @@
      * @param ExpenseService $service
      * @param string $UserId
      */
-     public function __construct($AppName, IRequest $request, ExpenseService $service, $UserId){
+     public function __construct($AppName, IRequest $request, IURLGenerator $urlGenerator, ExpenseService $service, $UserId){
          parent::__construct($AppName, $request);
          $this->service = $service;
          $this->userId = $UserId;
+         $this->urlGenerator = $urlGenerator;
      }
 
      /**
